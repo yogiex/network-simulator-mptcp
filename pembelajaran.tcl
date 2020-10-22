@@ -19,6 +19,8 @@ $ns duplex-link $ns0 $n1 5Mb 10Ms DropTail
 
 #membuat traffic TCP biasa
 set tcp0 [new Agent/TCP]
+$tcp0 set class_2
 $ns attach-agent $n0 $tcp0
-
-
+#set sink [new Agent/TCPSink]
+#$ns attach-agent
+$ns run
