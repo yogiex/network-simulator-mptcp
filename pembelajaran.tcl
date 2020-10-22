@@ -21,5 +21,4 @@ $ns duplex-link $ns0 $n1 5Mb 10Ms DropTail
 set tcp0 [new Agent/TCP]
 $ns attach-agent $n0 $tcp0
 
-#create CBR traffic 
-set cbr0 []
+
