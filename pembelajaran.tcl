@@ -33,18 +33,18 @@ $ne multihome-add-interface $n1 $n1_1
 $ne multihome-add-interface $n1 $n1_2
 
 
-#Define different colors for data flows (for NAM)
-$n0 color 1 Blue
-$n1 color 2 Red
 
-$ns duplex-link $ns0 $n1 1Mb 10Ms DropTail
-$ns duplex-link $ns0 $n1 1Mb 5Ms DropTail
+#create link 
+$ns duplex-link $ns0_1 $n1_1 1Mb 100Ms DropTail
+$ns duplex-link $ns0_2 $n1_2 1Mb 100Ms DropTail
+
+#sctp agent
+set sctp0 [new Agent/SCTP]
+$ns multihome-attach-agent $n0 $sctp0
+
+#sctp agent
+set sctp1 [new Agent/SCTP]
+$ns multihome-attach-agent $n1 $sctp1
 
 
-#membuat traffic TCP biasa
-set tcp0 [new Agent/TCP]
-$tcp0 set class_2
-$ns attach-agent $n0 $tcp0
-#set sink [new Agent/TCPSink]
-#$ns attach-agent
 $ns run
