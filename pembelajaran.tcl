@@ -10,12 +10,28 @@ set n0 [$ns node]
 set n0_1 [$ns node]
 set n0_2 [$ns node]
 
-
+#coloring node
+$n0 color red
+$n0_1 color red
+$n0_2 color red
+#multihome interface
+$ne multihome-add-interface $n0 $n0_1
+$ne multihome-add-interface $n0 $n0_2
 
 #init node n1
 set n1 [$ns node]
 set n1_1 [$ns node]
 set n1_2 [$ns node]
+
+#coloring node
+$n0 color blue
+$n0_1 color blue
+$n0_2 color blue
+
+#multihome interface
+$ne multihome-add-interface $n1 $n1_1
+$ne multihome-add-interface $n1 $n1_2
+
 
 #Define different colors for data flows (for NAM)
 $n0 color 1 Blue
