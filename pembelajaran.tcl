@@ -1,9 +1,25 @@
+#       
+#      n0_1==========n1_1
+#     /                 \
+#    /                   \
+#   n0                  n1
+#   \                   /
+#    \                 /
+#    no_2==========n1_2
+
+
 #Create a simulator object
 set ns [new Simulator]
 
 #membuat file trace
 set file [open fileTrace.tr w]
 $ns trace-all $file
+
+#procedur finis
+proc finish {}{
+    exec nam sctp.nam &
+    exit 0
+}
 
 #init node n0
 set n0 [$ns node]
@@ -31,7 +47,6 @@ $n0_2 color blue
 #multihome interface
 $ne multihome-add-interface $n1 $n1_1
 $ne multihome-add-interface $n1 $n1_2
-
 
 
 #create link 
