@@ -77,10 +77,7 @@ def topology():
     sta2.cmd('ip route add default scope global nexthop via 10.0.0.254 dev sta2-wlan0')
 
     net.plotGraph()
-    #net.startMobility(time=0, model='RandomWalk')
-    #net.mobility(sta1, 'start', time=10, position='51,10,0')
-    #net.mobility(sta1, 'stop', time=80, position='70,25,0')
-    #net.stopMobility(time=81)
+
     info("*** Starting network\n")
     net.build()
     c1.start()
@@ -106,10 +103,7 @@ def topology():
     
     sta1.cmdPrint('tc qdisc add dev sta1-wlan0 root netem limit 3Mbit loss 1% delay 75ms')
     sta1.cmdPrint('tc qdisc add dev sta1-wlan1 root netem limit 5Mbit loss 2% delay 10ms')
-    #net.pingAll()
     
-    
-
     info("*** Running CLI\n")
     CLI( net )
     
@@ -119,6 +113,8 @@ def topology():
 if __name__ == '__main__':
     os.system('mn -c')
     os.system('modprobe mptcp_balia && sysctl -w net.ipv4.tcp_congestion_control=balia')
+    #os.system('modprobe mptcp_balia && sysctl -w net.ipv4.tcp_congestion_control=olia')
     #os.system('modprobe mptcp_coupled && sysctl -w net.ipv4.tcp_congestion_control=lia') 
+    #os.system('modprobe mptcp_balia && sysctl -w net.ipv4.tcp_congestion_control=wvegaz')
     setLogLevel( 'info' )
     topology() 
